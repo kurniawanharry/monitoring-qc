@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "608224483247",
+    "project_id": "fir-monitoringqc",
+    "storage_bucket": "fir-monitoringqc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608224483247:android:a22a4550e5651bba18015a",
+        "android_client_info": {
+          "package_name": "com.qc.monitoring"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxWHNMROyF5u4btoFJyfC0Jpk54Cd7ohg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
