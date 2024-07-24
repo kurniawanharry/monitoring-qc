@@ -50,7 +50,7 @@ class MonitoringPage extends GetView<StatisticController> {
                                 ],
                               ),
                               const SizedBox(height: 5),
-                              Text('${controller.statusOk}'),
+                              Text('${controller.statusOk.toInt()}'),
                             ],
                           ),
                         ),
@@ -71,7 +71,7 @@ class MonitoringPage extends GetView<StatisticController> {
                                 ],
                               ),
                               const SizedBox(height: 5),
-                              Text('${controller.statusNok}'),
+                              Text('${controller.statusNok.toInt()}'),
                             ],
                           ),
                         ),
@@ -82,8 +82,8 @@ class MonitoringPage extends GetView<StatisticController> {
               ),
               PieChartSample2(
                 stat: StatisticModel(
-                  statusOk: controller.statusOk.value,
-                  statusNok: controller.statusNok.value,
+                  statusOk: (controller.statusOk.value / 4) * 100,
+                  statusNok: (controller.statusNok.value / 4) * 100,
                 ),
               ),
             ],

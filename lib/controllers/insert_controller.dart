@@ -20,6 +20,7 @@ class InsertController extends GetxController {
   TextEditingController descController = TextEditingController();
 
   RxString currentImage = ''.obs;
+  RxString currentImageUrl = ''.obs;
   RxBool loading = false.obs;
   RxBool withBoq = false.obs;
   RxBool withPole = false.obs;
@@ -36,9 +37,12 @@ class InsertController extends GetxController {
 
   String? _currentId;
 
+  RxBool loadingScreen = false.obs;
+
   @override
   void onInit() {
     if (Get.arguments != null) {
+      loadingScreen(true);
       isUpdated = true;
       var model = Get.arguments as MonitoringModel;
 
@@ -52,7 +56,12 @@ class InsertController extends GetxController {
       withCable.value = model.cable ?? false;
       withPole.value = model.pole ?? false;
       withAccessories.value = model.accessories ?? false;
-      currentImage.value = model.image ?? '';
+      currentImageUrl.value = model.image ?? '';
+      currentStatus.value = model.status ?? false;
+
+      Future.delayed(const Duration(seconds: 1)).then((_) {
+        loadingScreen(false);
+      });
     }
     super.onInit();
   }
@@ -61,8 +70,14 @@ class InsertController extends GetxController {
     FocusManager.instance.primaryFocus?.unfocus();
     var createdAt = convertDateTimeToUtcString();
 
-    String? image;
-    if (currentImage.isNotEmpty) {
+    String image = '';
+    if (isUpdated) {
+      if (currentImage.isNotEmpty) {
+        image = await uploadImageToFirebase(File(currentImage.value));
+      } else {
+        image = currentImageUrl.value;
+      }
+    } else if (currentImage.isNotEmpty) {
       image = await uploadImageToFirebase(File(currentImage.value));
     }
 

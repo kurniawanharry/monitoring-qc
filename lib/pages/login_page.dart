@@ -14,13 +14,14 @@ class LoginPage extends GetView<LoginController> {
         child: SafeArea(
           child: Stack(
             children: [
-              Align(
+              const Align(
                 alignment: Alignment.topCenter,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 100, top: 100),
-                  child: Text(
-                    'Monitroing QC',
-                    style: Theme.of(context).textTheme.displayLarge?.copyWith(),
+                child: FittedBox(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 100),
+                    child: Text(
+                      'Monitroing QC',
+                    ),
                   ),
                 ),
               ),

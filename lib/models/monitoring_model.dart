@@ -70,19 +70,23 @@ class MonitoringModel {
   factory MonitoringModel.fromDocumentSnapshot(DocumentSnapshot snapshot) {
     var data = snapshot.data() as Map<String, dynamic>;
     return MonitoringModel(
-      id: snapshot.id,
-      image: data['image'] ?? '',
-      mitra: data['mitra'] ?? '',
-      noProject: data['no_project'],
-      pic: data['pic'] ?? '',
-      boq: data['boq'] ?? false,
-      pole: data['pole'] ?? false,
-      cable: data['cable'] ?? false,
-      accessories: data['accessories'] ?? false,
-      date: data['date'] ?? '',
-      desc: data['desc'] ?? '',
-      createdAt: data['createdAt'] ?? '',
-      createdBy: data['createdBy'] ?? '',
-    );
+        id: snapshot.id,
+        image: data['image'] ?? '',
+        mitra: data['mitra'] ?? '',
+        noProject: data['no_project'],
+        pic: data['pic'] ?? '',
+        boq: data['boq'] ?? false,
+        pole: data['pole'] ?? false,
+        cable: data['cable'] ?? false,
+        accessories: data['accessories'] ?? false,
+        date: data['date'] ?? '',
+        desc: data['desc'] ?? '',
+        createdAt: data['createdAt'] ?? '',
+        createdBy: data['createdBy'] ?? '',
+        status: data['status'] ?? false);
+  }
+
+  static List<MonitoringModel> fromJsonList(List<QueryDocumentSnapshot> snapshot) {
+    return snapshot.map((e) => MonitoringModel.fromDocumentSnapshot(e)).toList();
   }
 }
